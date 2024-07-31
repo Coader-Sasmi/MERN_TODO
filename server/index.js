@@ -8,7 +8,8 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 env.config();
-console.log(process);
+// console.log(process);
+
 // Connect to MongoDB
 mongoose
   .connect(process.env.DATABASE_URL)
@@ -19,7 +20,7 @@ mongoose
 app.post("/add", async (req, res) => {
   try {
     const task = req.body.task;
-    console.log("Received task:", task); // Debugging: log received task
+    console.log("Received task:", task);
     const result = await TodoModel.create({ task });
     console.log("Created task:", result); // Debugging: log created task
     res.status(200).json(result);
@@ -32,7 +33,7 @@ app.post("/add", async (req, res) => {
 // Route to get all tasks
 app.get("/tasks", async (req, res) => {
   try {
-    const tasks = await TodoModel.find(); // Retrieve all tasks
+    const tasks = await TodoModel.find().sort({ createdAt: -1 }); // Retrieve all tasks
     console.log("Retrieved tasks:", tasks); // Debugging: log retrieved tasks
     res.status(200).json(tasks);
   } catch (err) {
