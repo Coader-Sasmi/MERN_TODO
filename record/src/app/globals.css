@@ -1,0 +1,49 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+  scrollbar-width: thin;
+  scrollbar-color: #572148 transparent;
+  scroll-behavior: smooth;
+}
+::-webkit-scrollbar {
+  width: 0.25em;
+  height: 0.25em;
+}
+::-webkit-scrollbar-thumb {
+  background: #572148;
+  border-radius: 10em;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  background-color: white;
+  color: black;
+  font-family: "Roboto", sans-serif;
+  scroll-behavior: smooth !important;
+}
+
+/* //? common styling */
+@layer components {
+  .main-container {
+    @apply container mx-auto px-4 md:px-5 lg:px-7 2xl:px-9;
+  }
+  .heading_title {
+    @apply text-2xl font-semibold tracking-wide text-primary;
+  }
+  .btn_primary {
+    @apply bg-primary grid place-items-center text-white tracking-wide capitalize shadow-[rgba(50,_50,_105,_0.15)_0px_2px_5px_0px,_rgba(0,_0,_0,_0.05)_0px_1px_1px_0px] hover:bg-[#A22065] transition-all ease-in-out duration-100;
+  }
+  .common-transition {
+    @apply transition-all ease-in-out duration-300 !important;
+  }
+}
